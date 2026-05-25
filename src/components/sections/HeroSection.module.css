@@ -448,6 +448,8 @@
 
   /* Move the earth below the top header for mobile/tablet */
   .globeWrapper {
+    width: 600px;
+    height: 600px;
     right: 50%;
     transform: translateX(50%);
     top: 15%;
@@ -484,6 +486,8 @@
   }
 
   .globeWrapper {
+    width: 450px;
+    height: 450px;
     top: 10%;
     bottom: auto;
     opacity: 0.25;

@@ -60,3 +60,9 @@
   background: var(--color-surface-hover);
   border-color: var(--color-border-glow);
 }
+
+:global([data-theme="light"]) :local(.secondary):hover {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-text-main);
+}

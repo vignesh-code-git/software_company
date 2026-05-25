@@ -141,3 +141,8 @@
     font-size: 1.1rem;
   }
 }
+
+:global([data-theme="light"]) :local(.invertLight) svg,
+:global([data-theme="light"]) :local(.invertLight) img {
+  filter: invert(1);
+}

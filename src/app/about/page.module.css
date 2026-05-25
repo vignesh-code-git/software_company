@@ -116,17 +116,17 @@
 }
 
 .statCard {
-  background: rgba(15, 23, 42, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--color-surface-light);
+  border: 1px solid var(--color-surface-border);
   border-radius: var(--radius-xl);
   padding: var(--spacing-2xl);
   text-align: center;
-  transition: transform 0.4s ease, border-color 0.4s ease;
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .statCard:hover {
-  transform: translateY(-5px);
-  border-color: rgba(59, 130, 246, 0.3);
+  background: var(--color-surface);
+  border-color: var(--color-border-glow);
 }
 
 .statNumber {
@@ -196,16 +196,16 @@
 
 .valueCard {
   position: relative;
-  background: rgba(15, 23, 42, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--color-surface-light);
+  border: 1px solid var(--color-surface-border);
   border-radius: var(--radius-2xl);
   padding: var(--spacing-2xl);
-  transition: transform 0.4s ease;
+  transition: background 0.4s ease;
   overflow: hidden;
 }
 
 .valueCard:hover {
-  transform: translateY(-5px);
+  background: var(--color-surface);
 }
 
 .cardHeader {
@@ -260,22 +260,4 @@
   margin: 0;
 }
 
-/* Glowing Hover Border */
-.cardBorder {
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-2xl);
-  border: 1px solid transparent;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), transparent 40%) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.valueCard:hover .cardBorder {
-  opacity: 1;
-}
+/* Removed glowing hover border as per request */

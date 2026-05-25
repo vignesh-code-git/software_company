@@ -129,10 +129,6 @@ export default function HeroSection() {
       
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.badge}>
-            <span className={styles.badgeDot}></span>
-            Future of Software Development
-          </div>
           <h1 className={styles.title}>
             Build Modern<br />
             <span className={styles.highlight}>Software Solutions</span>

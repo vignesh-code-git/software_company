@@ -189,3 +189,12 @@
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   box-shadow: none !important;
 }
+
+@media (max-width: 768px) {
+  :global([data-theme="light"]) :local(.nav) {
+    background: #ffffff;
+  }
+  :global([data-theme="light"]) :local(.navLink) {
+    color: var(--color-text-main);
+  }
+}

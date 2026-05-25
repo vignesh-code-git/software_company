@@ -31,12 +31,16 @@
     grid-template-columns: 4fr 6fr; /* Split layout on desktop */
     align-items: start;
   }
+  
+  .headerColumn {
+    position: sticky;
+    top: 120px; /* Sticks as user scrolls past */
+  }
 }
 
 /* ── Left Column: Sticky Header ── */
 .headerColumn {
-  position: sticky;
-  top: 120px; /* Sticks as user scrolls past */
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

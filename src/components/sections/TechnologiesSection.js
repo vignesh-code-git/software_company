@@ -41,8 +41,9 @@ const categories = [
 ];
 
 function Pill({ tech }) {
+  const needsInvert = tech.name === 'Vercel' || tech.name === 'Express';
   return (
-    <div className={styles.pill}>
+    <div className={`${styles.pill} ${needsInvert ? styles.invertLight : ''}`}>
       {tech.icon
         ? <span className={styles.icon}>{tech.icon}</span>
         : <Image src={tech.src} alt={tech.name} width={40} height={40} className={styles.iconImage} />
