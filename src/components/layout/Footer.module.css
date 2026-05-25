@@ -5,6 +5,11 @@
   margin-top: var(--spacing-4xl);
 }
 
+:global([data-theme="light"]) :local(.footer) {
+  background-color: #ffffff; /* White background */
+  border-top: 1px solid rgba(0, 0, 0, 0.15); /* More visible border */
+}
+
 .container {
   max-width: var(--max-width);
   margin: 0 auto;

@@ -10,7 +10,7 @@ export default function Footer() {
         <div className={styles.top}>
           <div className={styles.brand}>
             <Link href="/" className={styles.logo}>
-              Real<span className={styles.accent}>visions</span>
+              Company <span className={styles.accent}>Name</span>
             </Link>
             <p className={styles.tagline}>Engineered to Scale. Built for the Future.</p>
             <div className={styles.socials}>
