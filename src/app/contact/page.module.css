@@ -1,0 +1,151 @@
+.main {
+  min-height: 100vh;
+  padding-top: var(--spacing-4xl);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+}
+
+.hero {
+  text-align: center;
+  padding: var(--spacing-3xl) 0;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: var(--spacing-md);
+}
+
+.accent {
+  color: var(--color-primary);
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contactSection {
+  padding: var(--spacing-4xl) 0;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--spacing-4xl);
+}
+
+.formBox {
+  padding: var(--spacing-3xl);
+}
+
+.formBox h2 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xl);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.inputGroup label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(16, 28, 59, 0.4);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--color-text-main);
+  transition: all var(--transition-fast);
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: rgba(16, 28, 59, 0.8);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.infoBox h2 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xl);
+}
+
+.locationsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.locationCard {
+  padding: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.locationCard h4 {
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.locationCard p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.icon {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.directContact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.contactMethod {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-text-main);
+}
+
+@media (max-width: 992px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding-top: var(--spacing-2xl);
+  }
+}

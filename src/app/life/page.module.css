@@ -1,0 +1,364 @@
+.main {
+  min-height: 100vh;
+  padding-top: var(--spacing-4xl);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Hero Section ── */
+.hero {
+  padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 80vh;
+  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--spacing-xl);
+}
+
+.title {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-lg);
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Culture Section (DNA) ── */
+.cultureSection {
+  padding: var(--spacing-4xl) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3xl);
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.imageBlock {
+  position: relative;
+  height: 500px;
+  border-radius: var(--radius-2xl);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(15, 23, 42, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--spacing-2xl);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: radial-gradient(circle at top left, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at top left, black 20%, transparent 80%);
+}
+
+.imageContent {
+  position: relative;
+  z-index: 2;
+}
+
+.imageContent h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  color: white;
+}
+
+.imageContent p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+}
+
+.textBlock p {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-xl);
+}
+
+.valuesList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.valuesList li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.valuesList li strong {
+  color: var(--color-text-main);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.bullet {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+/* ── Perks Section ── */
+.perksSection {
+  padding: var(--spacing-4xl) 0;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.sectionSubtitle {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+}
+
+.perksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.perkCard {
+  position: relative;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-2xl);
+  transition: transform 0.4s ease;
+  overflow: hidden;
+}
+
+.perkCard:hover {
+  transform: translateY(-5px);
+}
+
+.perkIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-xl);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.perkCard h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-main);
+}
+
+.perkCard p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Glowing Hover Border */
+.cardBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-2xl);
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), transparent 40%) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.perkCard:hover .cardBorder {
+  opacity: 1;
+}
+
+/* ── Careers Section ── */
+.careersSection {
+  padding: 0 0 var(--spacing-4xl);
+}
+
+.careersHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.careersHeader p {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+}
+
+.jobsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.jobItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.jobItem:hover {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: scale(1.02);
+}
+
+.jobInfo h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: var(--spacing-xs);
+}
+
+.jobTags {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.tag {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.jobAction {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.arrowIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.jobItem:hover .jobAction {
+  color: var(--color-primary);
+}
+
+.jobItem:hover .arrowIcon {
+  background: var(--color-primary);
+  color: white;
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding-top: var(--spacing-2xl);
+  }
+  .perksGrid {
+    grid-template-columns: 1fr;
+  }
+  .jobItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  .jobAction {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

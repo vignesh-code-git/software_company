@@ -1,0 +1,143 @@
+.techSection {
+  padding: var(--spacing-4xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.title {
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -1px;
+}
+
+.accent {
+  color: var(--color-primary);
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Rows ── */
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Viewport-wide overflow hidden with edge fading */
+.track {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+}
+
+/* The animated strip — two identical groups side by side */
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: scrollLeft 90s linear infinite;
+}
+
+.marqueeReverse {
+  display: flex;
+  width: max-content;
+  animation: scrollRight 90s linear infinite;
+}
+
+/* Each group of pills — padding-right MUST match the gap so the join is seamless */
+.group {
+  display: flex;
+  gap: 0.75rem;
+  padding-right: 0.75rem; /* same as gap — bridges the boundary between groups */
+  flex-shrink: 0;
+}
+
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* ── Pill ── */
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  border: 1px solid var(--color-surface-border);
+  border-radius: 16px;
+  background: var(--color-surface-light);
+  white-space: nowrap;
+  cursor: default;
+}
+
+.icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.iconImage {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.techName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+  .techSection {
+    padding: var(--spacing-3xl) 0;
+  }
+  .pill {
+    padding: 0.75rem 1.5rem;
+  }
+  .icon {
+    font-size: 1.8rem;
+  }
+  .iconImage {
+    width: 32px;
+    height: 32px;
+  }
+  .techName {
+    font-size: 1.1rem;
+  }
+}

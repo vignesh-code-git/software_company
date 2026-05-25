@@ -1,0 +1,173 @@
+.section {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-4xl);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background ambient glow */
+.glowBg {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 80vw;
+  height: 80vh;
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 0%, transparent 60%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-4xl);
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+.accent {
+  color: var(--color-primary);
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Modern Card Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.card {
+  position: relative;
+  background: var(--color-surface-light);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: var(--color-surface);
+}
+
+/* ── Glow Border Effect ── */
+.cardBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-xl);
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), transparent 40%) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover .cardBorder {
+  opacity: 1;
+}
+
+/* ── Card Header (Icon & Arrow) ── */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.iconWrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--icon-color-transparent, rgba(59, 130, 246, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--icon-color, var(--color-primary));
+  border: 1px solid var(--icon-color-transparent, rgba(59, 130, 246, 0.2));
+  transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.card:hover .iconWrapper {
+  transform: scale(1.05);
+  background: var(--icon-color-hover, rgba(59, 130, 246, 0.15));
+}
+
+.arrowIcon {
+  font-size: 1.5rem;
+  color: var(--color-text-muted);
+  opacity: 0;
+  transform: translate(-10px, 10px);
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.card:hover .arrowIcon {
+  opacity: 1;
+  transform: translate(0, 0);
+  color: var(--icon-color, var(--color-primary));
+}
+
+/* ── Card Content ── */
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  z-index: 1; /* Keep above background effects */
+}
+
+.cardTitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+
+.cardDescription {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-3xl);
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    padding: var(--spacing-xl);
+  }
+}

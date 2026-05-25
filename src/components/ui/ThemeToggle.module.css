@@ -1,0 +1,71 @@
+.placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.toggleButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.toggleButton:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.2);
+}
+
+.iconContainer {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sun, .moon {
+  position: absolute;
+  font-size: 1.25rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sun {
+  color: #f59e0b; /* Amber */
+}
+
+.moon {
+  color: #3b82f6; /* Blue */
+}
+
+/* Dark Theme State */
+.dark .sun {
+  transform: translateY(30px) rotate(90deg);
+  opacity: 0;
+}
+
+.dark .moon {
+  transform: translateY(0) rotate(0);
+  opacity: 1;
+}
+
+/* Light Theme State */
+.light .sun {
+  transform: translateY(0) rotate(0);
+  opacity: 1;
+}
+
+.light .moon {
+  transform: translateY(-30px) rotate(-90deg);
+  opacity: 0;
+}

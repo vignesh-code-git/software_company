@@ -1,0 +1,514 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 6rem;
+  /* Reduced to help fit in viewport */
+  padding-bottom: 3rem;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--color-background) 0%, var(--color-background) 80%, transparent 100%);
+}
+
+/* Specific line grid pattern for the hero section */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(var(--bg-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to right, black 0%, black 40%, transparent 70%), linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 40%, transparent 70%), linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+
+
+
+.glowTopRight {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--bg-glow-2) 0%, var(--bg-glow-1) 40%, transparent 70%);
+  filter: blur(100px);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glowRight {
+  position: absolute;
+  top: 50%;
+  right: -20%;
+  transform: translateY(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--bg-glow-1) 0%, var(--bg-glow-2) 30%, transparent 70%);
+  filter: blur(100px);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+.globeWrapper {
+  position: absolute;
+  bottom: -20%;
+  right: -5%;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  box-shadow: 0 0 60px var(--globe-glow);
+  overflow: hidden;
+  z-index: 1;
+  perspective: 2000px;
+  mask-image: linear-gradient(to bottom, black 0%, black 30%, rgba(0, 0, 0, 0.1) 60%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 30%, rgba(0, 0, 0, 0.1) 60%, transparent 85%);
+}
+
+.scene3D {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.oceanOccluder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 30%, var(--globe-ocean-center), var(--globe-ocean-edge));
+  background-color: var(--globe-ocean-bg);
+  box-shadow: inset -40px -40px 80px var(--globe-ocean-edge), inset 10px 10px 40px var(--globe-ocean-center);
+  transform: translateZ(0px);
+  /* Exactly middle of 3D space */
+}
+
+.mapScroller {
+  position: absolute;
+  top: 2.8%;
+  left: 0;
+  width: 2400px;
+  height: 79.4%;
+  display: flex;
+  animation: scrollMap 40s linear infinite;
+  will-change: transform;
+  /* Hardware acceleration to prevent stutter */
+}
+
+.mapContainer {
+  position: relative;
+  flex: 0 0 800px;
+  width: 800px;
+  height: 100%;
+}
+
+.mapLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--globe-continent);
+  /* Theme Adaptive Continents */
+  mask-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
+  -webkit-mask-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.dotsLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  mask-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
+  -webkit-mask-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.mapSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.mapDot {
+  filter: drop-shadow(0 0 4px var(--globe-dot));
+}
+
+.mapHub {
+  filter: drop-shadow(0 0 8px var(--globe-dot));
+}
+
+
+
+
+
+/* Add the 3D spherical shadow OVER the map */
+.globeWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset -80px -80px 120px rgba(0, 0, 0, 0.95), inset 0 0 80px rgba(0, 200, 255, 0.3);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Add the 3D spherical shadow OVER the map */
+.globeWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset -150px -150px 150px rgba(0, 0, 0, 0.95), inset 0 120px 100px -30px rgba(0, 200, 255, 0.2);
+  pointer-events: none;
+}
+
+@keyframes scrollMap {
+  0% {
+    transform: translate3d(0, 0, 1px);
+  }
+
+  100% {
+    transform: translate3d(-800px, 0, 1px);
+  }
+}
+
+
+
+
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  /* Give the text more room */
+  align-items: center;
+  gap: var(--spacing-2xl);
+  /* Reduced gap to give left column space */
+  position: relative;
+  z-index: 10;
+  /* Ensures text is always clickable and above the earth */
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-2xl) 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  width: max-content;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.title {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.highlight {
+  color: var(--color-primary);
+}
+
+.description {
+  font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+  /* Scalable font size */
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 100%;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.heroStats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  /* Prevent overflow on small viewports */
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: fit-content;
+  /* Reduced back to strictly frame the stats */
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.statNumber {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  /* Responsive sizing */
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  /* Scaled down slightly */
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.statDivider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.visualContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.floatingIcons {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  /* Greatly reduced to prevent vertical overflow */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-40px);
+  /* Moves all 3 icons UP */
+}
+
+.floatingIcon {
+  position: absolute;
+  font-size: 4rem;
+}
+
+.geminiIcon {
+  color: #a855f7;
+  /* Vibrant Purple */
+  font-size: 7rem;
+  /* Scaled down slightly */
+  z-index: 3;
+  margin-right: 200px;
+  /* Reduced from 240px */
+  margin-top: 0px;
+  /* Moved up from 40px */
+}
+
+.brainIcon {
+  color: #3b82f6;
+  /* Bright Blue */
+  top: -10%;
+  right: 35%;
+  /* Moved further left from 25% */
+  animation-delay: -2s;
+  z-index: 2;
+}
+
+.codeIcon {
+  color: #06b6d4;
+  /* Bright Cyan/Teal */
+  bottom: -10%;
+  left: -15%;
+  /* Moved even further left */
+  animation-delay: -4s;
+  z-index: 2;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .hero {
+    padding-top: 8rem;
+    padding-bottom: 14rem;
+    /* Pulled up a tiny bit */
+    min-height: auto;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .badge {
+    margin: 0 auto;
+  }
+
+  .description {
+    margin: 0 auto;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .heroStats {
+    margin: var(--spacing-xl) auto 0;
+    justify-content: center;
+  }
+
+  /* Move the earth below the top header for mobile/tablet */
+  .globeWrapper {
+    right: 50%;
+    transform: translateX(50%);
+    top: 15%;
+    bottom: auto;
+    opacity: 0.35;
+    /* Faded slightly to act as a readable background */
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding-top: 6rem;
+    padding-bottom: 12rem;
+    /* Pulled up a tiny bit */
+    min-height: auto;
+  }
+
+  .title {
+    font-size: clamp(2.5rem, 8vw, 3.2rem);
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+
+  .visualContainer {
+    display: none;
+    /* Hide floating icons on mobile to save vertical space */
+  }
+
+  .globeWrapper {
+    top: 10%;
+    bottom: auto;
+    opacity: 0.25;
+    /* More faded on small phones */
+  }
+}
+
+/* iPad & Tablet Specific - Move Hero Up and Keep Side-by-Side */
+@media (min-width: 768px) and (max-width: 1366px) {
+  .hero {
+    min-height: 60vh; /* Drastically reduce height to remove empty vertical gap */
+    align-items: center;
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+  }
+  
+  .globeWrapper {
+    width: 700px;
+    height: 700px;
+    right: -25%;
+    bottom: -20%;
+  }
+}
+
+/* Dark Mode Background Override */
+:global([data-theme="dark"]) .hero {
+  background: linear-gradient(to bottom, #00122e 0%, #000a14 80%, transparent 100%);
+}

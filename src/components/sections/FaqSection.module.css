@@ -1,0 +1,194 @@
+.faqSection {
+  padding: var(--spacing-4xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient Background Glow */
+.glowBg {
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: 60vw;
+  height: 80vh;
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.04) 0%, transparent 70%);
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3xl);
+}
+
+@media (min-width: 992px) {
+  .container {
+    grid-template-columns: 4fr 6fr; /* Split layout on desktop */
+    align-items: start;
+  }
+}
+
+/* ── Left Column: Sticky Header ── */
+.headerColumn {
+  position: sticky;
+  top: 120px; /* Sticks as user scrolls past */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: var(--radius-pill);
+}
+
+.title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-main);
+  margin: 0;
+}
+
+.accent {
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 450px;
+  margin: 0;
+}
+
+/* ── Right Column: FAQ Accordion ── */
+.faqColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* FAQ Item Container */
+.faqItem {
+  position: relative;
+  background: var(--color-surface-light);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  cursor: pointer;
+  transition: background 0.3s ease;
+  overflow: hidden;
+}
+
+.faqItem:hover {
+  background: var(--color-surface);
+}
+
+/* Question Header */
+.questionContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.questionContainer h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text-main);
+  margin: 0;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.active .questionContainer h3 {
+  color: var(--color-primary);
+}
+
+/* Animated Plus/Cross Icon */
+.iconWrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-surface-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: var(--color-text-muted);
+}
+
+.faqItem:hover .iconWrapper {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-main);
+}
+
+.active .iconWrapper {
+  background: var(--color-primary);
+  color: white;
+  transform: rotate(45deg); /* Turns Plus into Cross */
+}
+
+/* Smooth expanding Answer */
+.answerWrapper {
+  transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  will-change: height, opacity;
+}
+
+.answerContent {
+  padding-top: var(--spacing-md);
+}
+
+.answerContent p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* Glowing Hover Border (same as Services) */
+.cardBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-xl);
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), transparent 40%) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.faqItem:hover .cardBorder {
+  opacity: 1;
+}
