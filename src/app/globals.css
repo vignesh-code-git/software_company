@@ -3,8 +3,8 @@
 :root,
 [data-theme="dark"] {
   /* Color Palette - Premium Dark Theme */
-  --color-background: #000000;
-  /* Pure black */
+  --color-background: #060b19;
+  /* Deep dark blue */
   --color-surface: rgba(16, 28, 59, 0.4);
   --color-surface-light: rgba(255, 255, 255, 0.03);
   --color-surface-hover: rgba(28, 48, 99, 0.6);

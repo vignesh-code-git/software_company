@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import { ThemeProvider } from "../components/providers/ThemeProvider";
 
 export const metadata = {
   title: "Company Name | Software Solutions",
@@ -9,13 +10,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <div className="page-wrapper">
-          <Navbar />
-          {children}
-          <Footer />
-        </div>
+        <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
+          <div className="page-wrapper">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
